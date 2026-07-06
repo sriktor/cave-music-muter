@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "cave-music-muter",
+	"version": "1.0.0",
+	"name": "Cave Music Muter",
+	"description": "mutes the music in the caves",
+	"authors": [
+		"Sriktor"
+	],
+	"contact": {	},
+	"license": "MIT",
+	"icon": "assets/cave-music-muter/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"net.sriktor.cavemusicmuter.CaveMusicMuter"
+		]
+	},
+	"mixins": [
+		"cave-music-muter.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

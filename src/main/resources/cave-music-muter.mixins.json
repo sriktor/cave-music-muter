@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "net.sriktor.cavemusicmuter.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"CaveMusicMuterMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
