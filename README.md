@@ -1,9 +1,11 @@
 # Cave Music Muter
 
-## Setup
+A simple client-side Fabric mod for Minecraft 1.21.1 that smoothly fades out the vanilla background music when you explore deep, dark caves.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+## Features
+* Automatically fades out music over 5 seconds when you go below Y=50 and there is no sky light.
+* Smoothly fades the music back in when you return to the surface.
+* **Client-side only** - you don't need to install this on servers to use it!
 
 ## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This project is available under the MIT license.
