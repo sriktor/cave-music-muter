@@ -14,7 +14,7 @@ public class ModConfig {
 
     public static ModConfig instance = new ModConfig();
 
-    // Domyślne wartości suwaków i opcji
+    // Default values for sliders and options
     public int maxSubterraneanY = 50;
     public boolean checkSkylight = true;
     public int fadeOutSeconds = 5;

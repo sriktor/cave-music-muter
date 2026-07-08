@@ -27,15 +27,13 @@ public class CaveFadingMusic extends MovingSoundInstance {
 
         BlockPos pos = client.player.getBlockPos();
 
-        // 1. Zastąpienie sztywnego Y wartością z configu
         boolean belowY = pos.getY() < ModConfig.instance.maxSubterraneanY;
 
-        // 2. Jeśli sprawdzanie światła jest wyłączone w configu, zawsze daje true. Jeśli włączone - sprawdza poziom światła = 0.
         boolean noSkylight = !ModConfig.instance.checkSkylight || client.world.getLightLevel(LightType.SKY, pos) == 0;
 
         boolean inCave = belowY && noSkylight;
 
-        // 3. Przeliczanie sekund z configu na tempo zgłaśniania/ściszania na tick (20 ticków na sekundę)
+
         if (inCave) {
             float fadeOutStep = 1.0f / (ModConfig.instance.fadeOutSeconds * 20.0f);
             this.fadeMultiplier -= fadeOutStep;
