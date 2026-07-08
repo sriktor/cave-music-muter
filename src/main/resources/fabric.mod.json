@@ -18,6 +18,9 @@
 	"entrypoints": {
 		"main": [
 			"net.sriktor.cavemusicmuter.CaveMusicMuter"
+		],
+		"modmenu": [
+			"net.sriktor.cavemusicmuter.ModMenuIntegration"
 		]
 	},
 	"mixins": [

@@ -8,7 +8,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LightType;
 import net.minecraft.util.math.random.Random;
 
-
 public class CaveFadingMusic extends MovingSoundInstance {
 
     private float fadeMultiplier = 1.0f;
@@ -21,7 +20,6 @@ public class CaveFadingMusic extends MovingSoundInstance {
         this.repeat = false;
     }
 
-
     @Override
     public void tick() {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -29,19 +27,24 @@ public class CaveFadingMusic extends MovingSoundInstance {
 
         BlockPos pos = client.player.getBlockPos();
 
+        // 1. Zastąpienie sztywnego Y wartością z configu
+        boolean belowY = pos.getY() < ModConfig.instance.maxSubterraneanY;
 
-        boolean inCave = pos.getY() < 50 && client.world.getLightLevel(LightType.SKY, pos) == 0;
+        // 2. Jeśli sprawdzanie światła jest wyłączone w configu, zawsze daje true. Jeśli włączone - sprawdza poziom światła = 0.
+        boolean noSkylight = !ModConfig.instance.checkSkylight || client.world.getLightLevel(LightType.SKY, pos) == 0;
 
+        boolean inCave = belowY && noSkylight;
 
+        // 3. Przeliczanie sekund z configu na tempo zgłaśniania/ściszania na tick (20 ticków na sekundę)
         if (inCave) {
-            this.fadeMultiplier -= 0.01f;
+            float fadeOutStep = 1.0f / (ModConfig.instance.fadeOutSeconds * 20.0f);
+            this.fadeMultiplier -= fadeOutStep;
         } else {
-            this.fadeMultiplier += 0.01f;
+            float fadeInStep = 1.0f / (ModConfig.instance.fadeInSeconds * 20.0f);
+            this.fadeMultiplier += fadeInStep;
         }
 
-
         this.fadeMultiplier = Math.max(0.0f, Math.min(1.0f, this.fadeMultiplier));
-
 
         this.volume = this.fadeMultiplier;
     }
